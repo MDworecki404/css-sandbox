@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import React from "react";
 import styled from "styled-components";
-import "./App.css";
 
 const Header = styled.header`
   width: 100%;
@@ -34,6 +33,11 @@ const Parameters = styled.aside`
 
   label {
     display: block;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 `;
 const Box = styled.div`
@@ -83,66 +87,72 @@ const App: React.FC = () => {
           <Box ref={BoxRef}></Box>
         </ViewBox>
         <Parameters>
-          <div>
-            <label htmlFor="width">Width</label>
-            <input
-              onChange={widthChange}
-              ref={widthRef}
-              id="width"
-              type="range"
-              min="0"
-              max="750"
-              defaultValue={250}
-            ></input>
-          </div>
-          <div>
-            <label htmlFor="Height">Height</label>
-            <input
-              onChange={heightChange}
-              ref={heightRef}
-              id="Height"
-              type="range"
-              min="0"
-              max="750"
-              defaultValue={250}
-            ></input>
-          </div>
-          <div>
-            <label htmlFor="RED">RGB: Red</label>
-            <input
-              onChange={colorChange}
-              ref={redRef}
-              id="RED"
-              type="range"
-              min="0"
-              max="255"
-              defaultValue={128}
-            ></input>
-          </div>
-          <div>
-            <label htmlFor="Green">RGB: Green</label>
-            <input
-              onChange={colorChange}
-              ref={greenRef}
-              id="Green"
-              type="range"
-              min="0"
-              max="255"
-              defaultValue={128}
-            ></input>
-          </div>
-          <div>
-            <label htmlFor="Blue">RGB: Blue</label>
-            <input
-              onChange={colorChange}
-              ref={blueRef}
-              id="Blue"
-              type="range"
-              min="0"
-              max="255"
-              defaultValue={128}
-            ></input>
-          </div>
+          <Parameters>
+            <div>
+              <label htmlFor="width">Width</label>
+              <input
+                onChange={widthChange}
+                ref={widthRef}
+                id="width"
+                type="range"
+                min="0"
+                max="750"
+                defaultValue={250}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="Height">Height</label>
+              <input
+                onChange={heightChange}
+                ref={heightRef}
+                id="Height"
+                type="range"
+                min="0"
+                max="750"
+                defaultValue={250}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="RED">RGB: Red</label>
+              <input
+                onChange={colorChange}
+                ref={redRef}
+                id="RED"
+                type="range"
+                min="0"
+                max="255"
+                defaultValue={128}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="Green">RGB: Green</label>
+              <input
+                onChange={colorChange}
+                ref={greenRef}
+                id="Green"
+                type="range"
+                min="0"
+                max="255"
+                defaultValue={128}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="Blue">RGB: Blue</label>
+              <input
+                onChange={colorChange}
+                ref={blueRef}
+                id="Blue"
+                type="range"
+                min="0"
+                max="255"
+                defaultValue={128}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="border">Border</label>
+              <input id="border" type="checkbox"></input>
+            </div>
+          </Parameters>
         </Parameters>
       </Main>
     </div>
