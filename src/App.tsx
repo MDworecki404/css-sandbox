@@ -47,12 +47,18 @@ const Box = styled.div`
 `;
 
 const App: React.FC = () => {
+  const state = {
+    isChecked: false,
+  };
+
   const BoxRef = useRef<HTMLDivElement>(null);
   const widthRef = useRef<HTMLInputElement>(null);
   const heightRef = useRef<HTMLInputElement>(null);
   const redRef = useRef<HTMLInputElement>(null);
   const greenRef = useRef<HTMLInputElement>(null);
   const blueRef = useRef<HTMLInputElement>(null);
+  const borderToggleRef = useRef<HTMLInputElement>(null);
+  const borderTypeRef = useRef<HTMLSelectElement>(null);
 
   const widthChange = () => {
     if (BoxRef.current && widthRef.current) {
@@ -63,6 +69,18 @@ const App: React.FC = () => {
   const heightChange = () => {
     if (BoxRef.current && heightRef.current) {
       BoxRef.current.style.height = `${heightRef.current.value}px`;
+    }
+  };
+
+  const BorderToggle = () => {
+    if (BoxRef.current && borderToggleRef.current && borderTypeRef) {
+      if (state.isChecked == false) {
+        BoxRef.current.style.border = "1px solid black";
+        state.isChecked = true;
+      } else if (state.isChecked == true) {
+        BoxRef.current.style.border = "none";
+        state.isChecked = false;
+      }
     }
   };
 
@@ -150,7 +168,35 @@ const App: React.FC = () => {
             </div>
             <div>
               <label htmlFor="border">Border</label>
-              <input id="border" type="checkbox"></input>
+              <input
+                onChange={BorderToggle}
+                ref={borderToggleRef}
+                id="border"
+                type="checkbox"
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="borderSize">Border size</label>
+              <input
+                id="borderSize"
+                type="range"
+                min="0"
+                max="100"
+                defaultValue={0}
+              ></input>
+              <label htmlFor="borderType">Border type</label>
+              <select ref={borderTypeRef} name="borderType">
+                <option value="dotted">dotted</option>
+                <option value="dashed">dashed</option>
+                <option value="solid">solid</option>
+                <option value="double">double</option>
+                <option value="groove">groove</option>
+                <option value="ridge">ridge</option>
+                <option value="inset">inset</option>
+                <option value="outset">outset</option>
+                <option value="none">none</option>
+                <option value="hidden">hidden</option>
+              </select>
             </div>
           </Parameters>
         </Parameters>
